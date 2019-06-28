@@ -6,7 +6,7 @@
 #    By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/28 11:14:20 by DCCXXVi           #+#    #+#              #
-#    Updated: 2019/06/28 11:37:41 by DCCXXVi          ###   ########.fr        #
+#    Updated: 2019/06/28 14:39:59 by DCCXXVi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ FLAG = -Wall -Wextra -Werror -g -O3
 OBJDIR = objects/
 LIBDIR = libft/
 SRCDIR = src/
-SRC = main.c 
+SRC = main.c main_loop.c create_struct.c key_hook.c
 INC = -I $(LIBDIR) \
--I ./includes
+-I ./includes \
+-I ~/Library/Frameworks/SDL2.framework/Versions/A/Headers
 LIB = -L $(LIBDIR) -lft
 FRWR = -framework SDL2 -F ~/Library/Frameworks
 OBJS = $(addprefix objects/, $(SRC:.c=.o))

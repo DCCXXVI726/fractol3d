@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol3d.h                                        :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/28 11:12:22 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/06/28 14:42:22 by DCCXXVi          ###   ########.fr       */
+/*   Created: 2019/06/28 14:20:06 by DCCXXVi           #+#    #+#             */
+/*   Updated: 2019/06/28 14:44:19 by DCCXXVi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL3D_H
-# define FRACTOL3D_H
-# include "libft.h"
-# include <SDL.h>
-typedef struct	s_fractol3d
+#include "fractol3d.h"
+
+int		key_hook(t_fractol3d *fractol3d)
 {
-	SDL_Window	*window;
-	SDL_Surface	*screen;
-}				t_fractol3d;
-int				key_hook(t_fractol3d *fractol3d);
-t_fractol3d		*create_struct(void);
-void			main_loop(t_fractol3d *fractol3d);
-#endif
+	SDL_Event e;
+	(void)fractol3d;
+	while(SDL_PollEvent(&e))
+	{
+		if ((e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) || e.type == SDL_QUIT)
+			return(0);
+	}
+	return(1);
+}
