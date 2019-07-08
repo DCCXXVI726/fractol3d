@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 13:32:59 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/06/28 14:15:47 by DCCXXVi          ###   ########.fr       */
+/*   Updated: 2019/07/08 16:41:38 by DCCXXVi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ void		init_sdl(t_fractol3d *fractol3d)
         check_error_n_exit(1, "Проблема с surface окна");
 }
 
+void		init_start_variable(t_fractol3d *fractol3d)
+{
+	fractol3d->camera.x = 0;
+	fractol3d->camera.y = 0;
+	fractol3d->camera.z = 0;
+	fractol3d->camera.alpha = 0;
+	fractol3d->camera.teta = 0;
+}
 
 t_fractol3d	*create_struct()
 {
@@ -35,6 +43,7 @@ t_fractol3d	*create_struct()
 	fractol3d = (t_fractol3d*)malloc(sizeof(t_fractol3d));
 	if (fractol3d == 0)
 		check_error_n_exit(1, "незамолочилась структура");
+	init_start_variable(fractol3d);
 	init_sdl(fractol3d);
 	return (fractol3d);	
 }
