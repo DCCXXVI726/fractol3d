@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 13:32:59 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/07/08 16:41:38 by DCCXXVi          ###   ########.fr       */
+/*   Updated: 2019/07/08 17:23:34 by DCCXXVi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void		init_start_variable(t_fractol3d *fractol3d)
 	fractol3d->camera.z = 0;
 	fractol3d->camera.alpha = 0;
 	fractol3d->camera.teta = 0;
+	fractol3d->move_flag.top = 0;
+	fractol3d->move_flag.bot = 0;
+	fractol3d->move_flag.forward = 0;
+	fractol3d->move_flag.back = 0;
+	fractol3d->move_flag.right = 0;
+	fractol3d->move_flag.left = 0;
 }
 
 t_fractol3d	*create_struct()

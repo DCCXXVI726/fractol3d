@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 11:12:22 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/07/08 16:41:40 by DCCXXVi          ###   ########.fr       */
+/*   Updated: 2019/07/08 17:27:19 by DCCXXVi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,22 @@ typedef struct  s_camera
     double      teta;
 }               t_camera;
 
+typedef struct	s_move_flag
+{
+	int			top;
+	int			bot;
+	int			forward;
+	int			back;
+	int			right;
+	int			left;
+}				t_move_flag;
+
 typedef struct	s_fractol3d
 {
 	SDL_Window	*window;
 	SDL_Surface	*screen;
 	t_camera	camera;
+	t_move_flag	move_flag;
 }				t_fractol3d;
 
 int				key_hook(t_fractol3d *fractol3d);
