@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 14:00:01 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/06/28 14:47:59 by DCCXXVi          ###   ########.fr       */
+/*   Updated: 2019/07/09 15:01:20 by DCCXXVi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	main_loop(t_fractol3d	*fractol3d)
 	{
 		flag = key_hook(fractol3d);
 		*((int*)fractol3d->screen->pixels) = 0xFFFFFF;
+		fill_img(fractol3d);
 		SDL_UpdateWindowSurface(fractol3d->window);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bfalmer- <bfalmer-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 18:25:21 by thorker           #+#    #+#             */
-/*   Updated: 2019/04/16 18:19:54 by bfalmer-         ###   ########.fr       */
+/*   Updated: 2019/07/09 15:13:55 by DCCXXVi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct			s_comp
 	double				img;
 }						t_comp;
 
-t_opencl				*init_opencl(char *name_file, char *name_func);
 void					check_error_n_exit(int i, char *str);
 void					ft_vctdel(t_vector **begin);
 t_vector				*ft_vctadd(t_vector **b, double x, double y, double z);

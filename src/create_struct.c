@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 13:32:59 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/07/08 17:23:34 by DCCXXVi          ###   ########.fr       */
+/*   Updated: 2019/07/09 15:32:15 by DCCXXVi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		init_sdl(t_fractol3d *fractol3d)
 	error = SDL_Init(SDL_INIT_EVERYTHING);
     if (error < 0)
         check_error_n_exit(1, "Проблема с инициализацией  SDL");
-    fractol3d->window = SDL_CreateWindow("Fractol3d", 0, 0, 1000, 1000, SDL_WINDOW_SHOWN);
+    fractol3d->window = SDL_CreateWindow("Fractol3d", 0, 0, 600, 600, SDL_WINDOW_SHOWN);
     if (fractol3d->window == 0)
         check_error_n_exit(1, "Пробема с созданием окна");
     fractol3d->screen = SDL_GetWindowSurface(fractol3d->window);
@@ -40,6 +40,8 @@ void		init_start_variable(t_fractol3d *fractol3d)
 	fractol3d->move_flag.back = 0;
 	fractol3d->move_flag.right = 0;
 	fractol3d->move_flag.left = 0;
+	fractol3d->limit = 600 * 600;
+	fractol3d->fill_string = ft_strnew(fractol3d->limit * 4);
 }
 
 t_fractol3d	*create_struct()
@@ -49,6 +51,7 @@ t_fractol3d	*create_struct()
 	fractol3d = (t_fractol3d*)malloc(sizeof(t_fractol3d));
 	if (fractol3d == 0)
 		check_error_n_exit(1, "незамолочилась структура");
+	init_opencl(fractol3d);
 	init_start_variable(fractol3d);
 	init_sdl(fractol3d);
 	return (fractol3d);	
