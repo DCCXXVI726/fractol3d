@@ -60,10 +60,10 @@ __kernel void fractil3d(__global char* string, double start_x, double start_y, d
 	int color;
 
 	i = get_global_id(0);
-	step = 0.1;
+	step = 0.01;
 	count_step = 1;
-	max_step = 50;
-	max_iter = 50;
+	max_step = 350;
+	max_iter = 150;
 	pi = 3.14;
 	color = 0xFFFFFF;
 	alpha = (start_alpha + (i % 600) * 3.0 / 20 - 45) / 180 * pi;
@@ -82,9 +82,11 @@ __kernel void fractil3d(__global char* string, double start_x, double start_y, d
 			ft_julia(&x, &y, z);
 			iter++;
 		}
-		if (iter > max_iter / 2)
+		if (iter > 8)
 		{
-			color = ((double)(max_iter - iter)) / (max_iter / 2) * 255;
+			color = ((double)(max_iter - iter)) / (max_iter - 8) * 255 * 256;
+			if (iter == max_iter)
+				color = 255 * 256 * 256;
 			count_step = max_step;
 		}
 		count_step++;
