@@ -45,9 +45,10 @@ __kernel void fractil3d(__global char* string, double start_x, double start_y, d
 	double step;
 	int count_step;
 	int i;
-	int max_step;
+	double max_dist;
 	int iter;
 	int max_iter;
+	int max_step;
 	double xc;
 	double yc;
 	double zc;
@@ -58,31 +59,41 @@ __kernel void fractil3d(__global char* string, double start_x, double start_y, d
 	double y;
 	double z;
 	int color;
+	double projection;
 
 	i = get_global_id(0);
-	step = 0.01;
+	step = 0.001;
 	count_step = 1;
-	max_step = 350;
+	max_step = 150;
+	max_dist = 2;
 	max_iter = 150;
 	pi = 3.14;
 	color = 0xFFFFFF;
 	alpha = (start_alpha + (i % 600) * 3.0 / 20 - 45) / 180 * pi;
 	teta = (start_teta - (i / 600) * 3.0 / 20 + 45) / 180 * pi;
-	while (count_step < max_step)
+	xc = start_x + cos(alpha) * sin(teta) * count_step * step;
+	yc = start_y + sin(alpha) * sin(teta) * count_step * step;
+	zc = start_z + cos(teta) * count_step * step;
+	projection = xc * (cos(start_alpha / 180 * pi) * sin(start_teta / 180 * pi)) + yc * (sin(start_alpha / 180 * pi) * sin(start_teta / 180 * pi)) + zc * cos(start_teta / 180 * pi);
+	while (projection * projection < max_dist * max_dist && count_step < max_step)
 	{
 		xc = start_x + cos(alpha) * sin(teta) * count_step * step;
 		yc = start_y + sin(alpha) * sin(teta) * count_step * step;
 		zc = start_z + cos(teta) * count_step * step;
+		projection = xc * (cos(start_alpha / 180 * pi) * sin(start_teta / 180 * pi)) + yc * (sin(start_alpha / 180 * pi) * sin(start_teta / 180 * pi)) + zc * cos(start_teta / 180 * pi);
 		x = xc;
 		y = yc;
 		z = zc;
 		iter = 0;
 		while (iter < max_iter && (x * x + y * y) <= 4)
 		{
-			ft_julia(&x, &y, z);
+			ft_pow3(&x, &y, &z);
+			x = x + xc;
+			y = y + yc;
+			z = z + zc;
 			iter++;
 		}
-		if (iter > 8)
+		if (iter > 10)
 		{
 			color = ((double)(max_iter - iter)) / (max_iter - 8) * 255 * 256;
 			if (iter == max_iter)
