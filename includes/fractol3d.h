@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 11:12:22 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/07/11 19:51:10 by thorker          ###   ########.fr       */
+/*   Updated: 2019/07/23 19:47:34 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ typedef struct	s_fractol3d
 	int					mouse_x;
 	int					mouse_y;
 	char				*fill_string;
+	int					max_color;
+	int					max_iter;
+	double				max_dist;
 }				t_fractol3d;
 
 void			fill_img(t_fractol3d *fractol3d);

@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 13:32:59 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/07/11 19:57:54 by thorker          ###   ########.fr       */
+/*   Updated: 2019/07/23 20:12:00 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void		init_start_variable(t_fractol3d *fractol3d)
 	fractol3d->limit = 600 * 600;
 	fractol3d->mouse_x = 300;
 	fractol3d->mouse_y = 300;
+	fractol3d->max_color = 0xFF00;
+	fractol3d->max_dist = 1.1;
+	fractol3d->max_iter = 50;
 	fractol3d->fill_string = ft_strnew(fractol3d->limit * 4);
 }
 

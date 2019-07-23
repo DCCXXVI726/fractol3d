@@ -6,7 +6,7 @@
 /*   By: DCCXXVi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 14:47:50 by DCCXXVi           #+#    #+#             */
-/*   Updated: 2019/07/11 15:16:59 by thorker          ###   ########.fr       */
+/*   Updated: 2019/07/23 19:52:32 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ static void	set_kernel_arg(t_fractol3d *fractol3d)
                 &(fractol3d->camera.alpha));
 	fractol3d->error |= clSetKernelArg(fractol3d->kernel, 5, sizeof(double),
                 &(fractol3d->camera.teta));
+	fractol3d->error |= clSetKernelArg(fractol3d->kernel, 6, sizeof(int),
+			&(fractol3d->max_color));
+	fractol3d->error |= clSetKernelArg(fractol3d->kernel, 7, sizeof(int),
+			&(fractol3d->max_iter));
+	fractol3d->error |= clSetKernelArg(fractol3d->kernel, 8, sizeof(double),
+			&(fractol3d->max_dist));
 }
 
 void	fill_img(t_fractol3d *fractol3d)
